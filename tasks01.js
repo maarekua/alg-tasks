@@ -1,3 +1,5 @@
+//87
+
 function sumOfLastNumbers(numbers) {
   console.log(
     numbers.reduce((sum, el) => {
@@ -5,6 +7,8 @@ function sumOfLastNumbers(numbers) {
     }, 0)
   );
 }
+
+//226
 
 sumOfLastNumbers([12, 15, 21, 52]);
 
@@ -17,6 +21,8 @@ function multipleNumbers(m, n) {
   }
   console.log(result);
 }
+
+//559
 
 function mersennePrime(number) {
   const mersennePrimeNumbers = [
