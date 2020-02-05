@@ -1,0 +1,29 @@
+const exercises = []
+function start () {
+    let a = prompt(`
+        Please choose exersice you want to execute:
+        ${exercises}`);
+    console.log(a)
+}
+
+start()
+
+class Exercise {
+    constructor (number, name, description, exercise) {
+        this.number = number
+        this.name = name,
+        this.description = description,
+        this.exercise = exercise
+    }
+}
+
+const exercise88 = new Exercise(
+    88,
+    "Exercise name",
+    "Exercise description",
+    function () {
+        console.log("hello")
+    }
+    )
+
+console.log(exercise88.exercise)
