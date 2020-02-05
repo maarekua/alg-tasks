@@ -88,3 +88,35 @@ function numberFunction(number) {
 }
 
 numberFunction(1231245);
+
+
+
+// 560
+
+const deviders = []
+const result = []
+
+function findDeviders(number) {
+  for (let i = 1; i < number; i++) {
+    if (number % i === 0) {
+      deviders.push(i)
+    }
+  }
+}
+  
+ function sumOfDeviders (array) {
+   return array.reduce((sum, el) => sum + el)
+ }
+
+function friendsNumbers(range1, range2) {
+  for (let i = range1; i <= range2; i++) {
+    findDeviders(i)
+    if (sumOfDeviders(deviders) <= range2 && sumOfDeviders(deviders) >= range1) {
+      result.push([i, sumOfDeviders(deviders)])
+      deviders.length = 0
+    }
+  }
+  console.log(result)
+}
+
+console.log(friendsNumbers(200, 300))
