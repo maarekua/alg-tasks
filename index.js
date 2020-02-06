@@ -1,21 +1,23 @@
-import { exercises, exercisesNumber } from "./exercises"
+import { tasks, taskNumbers } from './constructor.js'
+
 
 function start () {
-    const userInput = getInput()
-    checkInput(+userInput)
+    const userInput = getInput();
+    const exercise = chooseExercise(userInput);
+    const result = execute.apply(exercise);
+    resultLogger(result)
 }
 
 function getInput() {
-    return prompt(`
+    return +prompt(`
         Please choose exersice you want to execute:
-        ${exercisesNumber}`);
+        ${taskNumbers}`);
 }
 
-function checkInput(input) {
-    const exercise = checkExerciseNumber(+input);
-    if (+input !== NaN && exercise > -1) {
-        let execution = run.bind(exercises[exercise]);
-        execution();
+function chooseExercise(input) {
+    const inputValue = checkExerciseNumber(input);
+    if (inputValue > -1) {
+        return tasks[inputValue]
     }
     else {
         alert('Please choose valid exercise number!');
@@ -24,22 +26,20 @@ function checkInput(input) {
 }
 
 function checkExerciseNumber(input) {
-    return exercisesNumber.indexOf(input)
+    return taskNumbers.indexOf(input)
 }
 
-function run() {
+function execute() {
     const numOfArgs = this.execute.length
     let userInput = prompt(`${this.name}
         ${this.description},
-        Please provide ${numOfArgs} parameter(s) separeted by comma (,)`)
-    let input = userInput.split(",")
-    resultLogger(this.execute(+input[0], +input[1]))
+        Please provide ${numOfArgs} parameter(s) separeted by comma ","`)
+    let input = userInput.split(",").map(el => +el)
+    return this.execute(...input)
 }
 
 function resultLogger(message) {
     console.log(message)
 }
-
-
 
 start()
